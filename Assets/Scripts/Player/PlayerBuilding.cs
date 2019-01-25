@@ -70,7 +70,9 @@ namespace Dima.Player {
             ghostRenderer.material = ghostMaterialValid;          // Update ghost material to valid
         }
 
-        // Snap raycast hit position to the grid
+        /* Divine solution by Kristo Johansson */
+        /// <returns></returns>
+        // Snap raycast hit to the grid
         public Vector3 GetHitPosition() {
             if (hit.collider != null) {
                 Vector3 hitPos = hit.point;
@@ -152,7 +154,7 @@ namespace Dima.Player {
 
         void PlaceWorldEntity() {
             if (validPosition) {
-                ModuleSpawner.SpawnWorldEntity(1, GetHitPosition());
+                EntitySpawner.SpawnEntity(1, GetHitPosition());
                 SoundSystem.PlaySound2D("item_place01");
             }
         }
@@ -161,7 +163,7 @@ namespace Dima.Player {
             if (hit.collider != null) {
                 EntityCollider entityCollider = hit.collider.GetComponent<EntityCollider>();
                 if (entityCollider != null) {
-                    SectorColliders.RemoveEntityCollider(entityCollider);
+                    EntityColliders.RemoveEntityCollider(entityCollider);
                     EntityComponentStrapper.AddEntityComponentData(entityCollider.LinkedEntity, new EntityDestroyTagData{ Value = 1});
                 }
             }

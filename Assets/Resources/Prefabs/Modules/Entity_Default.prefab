@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 6896692611130617452}
   - component: {fileID: 6081449933920942308}
   - component: {fileID: 8251689042744021237}
+  - component: {fileID: 8274476148566115417}
   m_Layer: 10
-  m_Name: Module_Default
+  m_Name: Entity_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,3 +115,17 @@ MonoBehaviour:
     layer: 10
     castShadows: 1
     receiveShadows: 1
+--- !u!114 &8274476148566115417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098821934155170209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9502607153856f4e85315c553bda968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedData:
+    Value: 1

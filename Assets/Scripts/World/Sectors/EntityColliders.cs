@@ -3,7 +3,7 @@ using UnityEngine;
 using Unity.Entities;
 using System;
 
-public static class SectorColliders {
+public static class EntityColliders {
 
     private static Dictionary<int, EntityCollider> colliders = new Dictionary<int, EntityCollider>();
     private static int collidersSpawned = 0;

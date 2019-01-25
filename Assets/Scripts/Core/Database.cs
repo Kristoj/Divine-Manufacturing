@@ -1,18 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Database : MonoBehaviour {
 
     public GameObject modulePrefab;
     public AudioClip[] sounds;
-
-    void Awake() {
-        // TODO We need to call init functions somewhere else
-        // It isn't Databases job to do this...
-        SoundSystem.SetupSoundSystem();
-        WorldReference.OnAwake();
-    }
 
     // Singleton self reference
     private static Database pm_database;
@@ -27,6 +18,19 @@ public class Database : MonoBehaviour {
         }
     }
 
+    void Awake() {
+        // TODO We need to call init functions somewhere else
+        // It isn't Databases job to do this...
+        SoundSystem.SetupSoundSystem();
+        WorldReference.OnAwake();
+    }
+
+    public GameObject GetDummyEntity(short entityId) {
+        return modulePrefab;
+    }
+
+
+    #region Audio
     public void AssignAudioFiles(ref object[] objs) {
         sounds = new AudioClip[objs.Length];
         for (int i = 0; i < objs.Length; i++) {
@@ -61,5 +65,6 @@ public class Database : MonoBehaviour {
 
         return sound;
     }
+    #endregion
 
 }
