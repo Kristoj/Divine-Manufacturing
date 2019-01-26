@@ -24,7 +24,6 @@ namespace Dima.DebugStuff {
             if (playerVelocityText != null) {
                 playerVelocityText.text = "Pvel: " + GameWorld.LocalPlayer.Player_Controller.velocity.ToString("F1");
             }
-
         }
 
     }

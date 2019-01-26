@@ -2943,5 +2943,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3190635005429165980, guid: 14780b9f9e3874545a84dcb7cd82c6d7,
+        type: 3}
+      propertyPath: groundAcceleration
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190635005429165980, guid: 14780b9f9e3874545a84dcb7cd82c6d7,
+        type: 3}
+      propertyPath: walkAcceleration
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14780b9f9e3874545a84dcb7cd82c6d7, type: 3}

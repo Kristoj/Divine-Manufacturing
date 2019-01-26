@@ -5,8 +5,12 @@ namespace Dima.Player {
     public class PlayerController : MonoBehaviour {
 
         [Header("Ground Movement")]
-        public float moveSpeed = 9f;
-        public float groundAcceleration = 200f;
+        public float walkSpeed = 4f;
+        public float sprintSpeed = 8f;
+        private float speed;
+        public float walkAcceleration = 40f;
+        public float sprintAcceleration = 120f;
+        private float groundAcceleration;
         public float deacceleration = 5f;
 
         [Header("Jumping")]
@@ -25,6 +29,8 @@ namespace Dima.Player {
 
         void Awake() {
             controller = GetComponent<CharacterController>();
+            speed = walkSpeed;
+            groundAcceleration = walkAcceleration;
         }
 
         void Update() {
@@ -43,7 +49,7 @@ namespace Dima.Player {
 
             // Clamp velocity
             Vector2 clampVel = new Vector3(velocity.x, velocity.z);
-            clampVel = Vector2.ClampMagnitude(clampVel, moveSpeed);
+            clampVel = Vector2.ClampMagnitude(clampVel, speed);
             velocity = new Vector3(clampVel.x, velocity.y, clampVel.y);
         }
 
@@ -71,6 +77,16 @@ namespace Dima.Player {
             // Jumping
             if (Input.GetKeyDown(KeyCode.Space)) {
                 Jump();
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && controller.isGrounded) {
+                speed = sprintSpeed;
+                groundAcceleration = sprintAcceleration;
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftShift)) {
+                speed = walkSpeed;
+                groundAcceleration = walkAcceleration;
             }
         }
 
