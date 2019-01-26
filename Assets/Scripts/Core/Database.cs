@@ -2,7 +2,7 @@
 
 public class Database : MonoBehaviour {
 
-    public GameObject modulePrefab;
+    public GameObject[] entities;
     public AudioClip[] sounds;
 
     // Singleton self reference
@@ -25,8 +25,8 @@ public class Database : MonoBehaviour {
         WorldReference.OnAwake();
     }
 
-    public GameObject GetDummyEntity(short entityId) {
-        return modulePrefab;
+    public GameObject GetDummyEntity(short entityReferenceId) {
+        return entities[entityReferenceId];
     }
 
 

@@ -1,5 +1,6 @@
 ﻿using Unity.Entities;
 
+[System.Serializable]
 public struct EntityReferenceData : IComponentData {
     public short Value;
 

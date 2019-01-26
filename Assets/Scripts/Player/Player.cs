@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     public PlayerCamera Player_Camera { get; set; }
     public PlayerController Player_Controller { get; set; }
     public PlayerBuilding Player_Building { get; set; }
+    public PlayerToolbar Player_Toolbar{get; set;}
     public Transform Player_Head { get; set; }
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour {
         Player_Camera = GetComponent<PlayerCamera>();
         Player_Controller = GetComponent<PlayerController>();
         Player_Building = GetComponent<PlayerBuilding>();
+        Player_Toolbar = GetComponent<PlayerToolbar>();
 
         // Player head
         Transform t = transform.GetChild(0);

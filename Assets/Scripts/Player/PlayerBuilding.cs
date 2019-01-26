@@ -154,7 +154,7 @@ namespace Dima.Player {
 
         void PlaceWorldEntity() {
             if (validPosition) {
-                EntitySpawner.SpawnEntity(1, GetHitPosition());
+                EntitySpawner.SpawnEntity(GameWorld.LocalPlayer.Player_Toolbar.SelectedSlot.SlotEntity.Value, GetHitPosition());
                 SoundSystem.PlaySound2D("item_place01");
             }
         }
