@@ -8,6 +8,7 @@ namespace Dima.DebugStuff {
         public Text focusRoundText;
         public Text focusRawText;
         public Text focusGreatestText;
+        public Text playerVelocityText;
 
         void Update() {
             UpdateUI();
@@ -20,6 +21,9 @@ namespace Dima.DebugStuff {
                 focusRawText.text = "Tile Raw: " + GameWorld.LocalPlayer.Player_Building.GetRaycastInfo().point.ToString("F2");
             if (focusGreatestText != null)
                 focusGreatestText.text = "Greatest: " + GameWorld.LocalPlayer.Player_Building.GreatestAxis;
+            if (playerVelocityText != null) {
+                playerVelocityText.text = "Pvel: " + GameWorld.LocalPlayer.Player_Controller.velocity.ToString("F1");
+            }
 
         }
 
