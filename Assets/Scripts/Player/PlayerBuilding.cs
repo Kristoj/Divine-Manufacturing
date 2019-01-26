@@ -117,7 +117,8 @@ namespace Dima.Player {
                     }
                     // Y is greatest
                     else if (longestDistance == originDistance.y) {
-                        hitPos.y += (originDistance.y >= 0 ? -offset * .5f : offset * .5f);
+                        float tempYOffset = (GameWorld.LocalPlayer.Player_Toolbar.SelectedSlot.SlotEntityReferenceData.Value == 1 ? .5f : hit.collider.bounds.size.y);     // This will be removed in the future
+                        hitPos.y += (originDistance.y >= 0 ? -offset * tempYOffset : offset * tempYOffset);
                         GreatestAxis = originDistance.y >= 0 ? "-Y" : "Y";
                     }
                     // Z is greatest
@@ -141,7 +142,7 @@ namespace Dima.Player {
                 if (allowSmallerGrid && longestDistance == originDistance.y) {
                     float ySize = hit.collider.bounds.size.y;
                     if (originDistance.y <= 0)
-                        hitPos.y += ySize - (float)(Math.Truncate(hit.collider.bounds.size.y));
+                            hitPos.y += ySize - (float)(Math.Truncate(hit.collider.bounds.size.y));
                 }
                 return hitPos;
             }
@@ -154,7 +155,7 @@ namespace Dima.Player {
 
         void PlaceWorldEntity() {
             if (validPosition) {
-                EntitySpawner.SpawnEntity(GameWorld.LocalPlayer.Player_Toolbar.SelectedSlot.SlotEntity.Value, GetHitPosition());
+                EntitySpawner.SpawnEntity(GameWorld.LocalPlayer.Player_Toolbar.SelectedSlot.SlotEntityReferenceData, GetHitPosition());
                 SoundSystem.PlaySound2D("item_place01");
             }
         }
@@ -163,8 +164,7 @@ namespace Dima.Player {
             if (hit.collider != null) {
                 EntityCollider entityCollider = hit.collider.GetComponent<EntityCollider>();
                 if (entityCollider != null) {
-                    EntityColliders.RemoveEntityCollider(entityCollider);
-                    EntityComponentStrapper.AddEntityComponentData(entityCollider.LinkedEntity, new EntityDestroyTagData{ Value = 1});
+                    EntitySpawner.DestroyEntity(entityCollider.LinkedEntity);
                 }
             }
         }

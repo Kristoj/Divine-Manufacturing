@@ -9,8 +9,8 @@ public class PlayerToolbar : MonoBehaviour {
     }
 
     void Init() {
-        Slots[0].SlotEntity = new EntityReferenceData(1);           // Set the slot0's world entity to default world entity
-        Slots[1].SlotEntity = new EntityReferenceData(2);           
+        Slots[0].SlotEntityReferenceData = new EntityReferenceData(1);           // Set the slot0's world entity to default world entity
+        Slots[1].SlotEntityReferenceData = new EntityReferenceData(2);           
         SelectedSlot = Slots[0];                                    // Select the first slot by default
     }
 

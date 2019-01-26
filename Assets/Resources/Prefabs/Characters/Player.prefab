@@ -584,8 +584,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bbd4c720816ab14fa39e2b8081d9775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  groundAcceleration: 150
+  walkSpeed: 4
+  sprintSpeed: 8
+  walkAcceleration: 60
+  sprintAcceleration: 120
   deacceleration: 7
   jumpForce: 9
   gravity: 32
@@ -642,7 +644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cec1613520c6947a3505f6c7bfe854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slots: []
 --- !u!143 &3190635005429165982
 CharacterController:
   m_ObjectHideFlags: 0

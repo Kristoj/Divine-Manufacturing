@@ -8,7 +8,7 @@ public static class EntityColliders {
     private static Dictionary<int, EntityCollider> colliders = new Dictionary<int, EntityCollider>();
     private static int collidersSpawned = 0;
 
-    public static void AddEntityCollider(Vector3 colliderPosition, Vector3 colliderSize, Entity entityToLink) {
+    public static void AddEntityCollider(Vector3 colliderPosition, Entity entityToLink) {
 
         /* TODO We will eventually reach INT_MAX with collidersSpawned.
          We need to change the solution. */
@@ -21,31 +21,33 @@ public static class EntityColliders {
         entityCollider.LinkedEntity = entityToLink;
         colliders.Add(entityCollider.EntityColliderIndex, entityCollider);
         collidersSpawned++;
+        // Link the collider to the entity
+        BootStrapper.entityManager.SetComponentData(entityToLink, new EntityLinkedColliderData { Value = entityCollider.EntityColliderIndex});
         // Orientate the gameobject
         entityCollider.transform.position = colliderPosition;
         entityCollider.transform.SetParent(WorldReference.SectorColliderParent);
         // Add a collider to the gameobject
         entityCollider.Collider = gm.AddComponent<BoxCollider>();
-        entityCollider.Collider.size = colliderSize;
+        entityCollider.Collider.size = (BootStrapper.entityManager.GetComponentData<EntityBoundsData> (entityToLink)).Value;
     }
 
-    public static void RemoveEntityCollider(EntityCollider entityColliderToRemove) {
+    public static void RemoveEntityCollider(EntityLinkedColliderData colliderData) {
 
         try {
-            //colliders.Remove(entityColliderToRemove);
-            colliders.Remove(entityColliderToRemove.EntityColliderIndex);
-            MonoBehaviour.Destroy(entityColliderToRemove.gameObject);
+            EntityCollider temp = GetEntityCollider(colliderData);
+            colliders.Remove(colliderData.Value);
+            MonoBehaviour.Destroy(temp.gameObject);
         }
         catch (Exception e) {
             Debug.LogException(e);
         }
     }
 
-    public static EntityCollider GetEntityCollider(EntityCollider entityColliderToFind) {
+    public static EntityCollider GetEntityCollider(EntityLinkedColliderData colliderToFind) {
         try {
             //return colliderList[index];
             //return colliderList.Find(Predicate<entityC>);
-            colliders.TryGetValue(entityColliderToFind.EntityColliderIndex, out EntityCollider value);
+            colliders.TryGetValue(colliderToFind.Value, out EntityCollider value);
             return value;
         }
         catch (Exception e) {
