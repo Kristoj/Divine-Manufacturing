@@ -22,13 +22,13 @@ public static class EntityColliders {
         colliders.Add(entityCollider.EntityColliderIndex, entityCollider);
         collidersSpawned++;
         // Link the collider to the entity
-        BootStrapper.entityManager.SetComponentData(entityToLink, new EntityLinkedColliderData { Value = entityCollider.EntityColliderIndex});
+        BootStrapper.Entity_Manager.SetComponentData(entityToLink, new EntityLinkedColliderData { Value = entityCollider.EntityColliderIndex});
         // Orientate the gameobject
         entityCollider.transform.position = colliderPosition;
         entityCollider.transform.SetParent(WorldReference.SectorColliderParent);
         // Add a collider to the gameobject
         entityCollider.Collider = gm.AddComponent<BoxCollider>();
-        entityCollider.Collider.size = (BootStrapper.entityManager.GetComponentData<EntityBoundsData> (entityToLink)).Value;
+        entityCollider.Collider.size = (BootStrapper.Entity_Manager.GetComponentData<EntityBoundsData> (entityToLink)).Value;
     }
 
     public static void RemoveEntityCollider(EntityLinkedColliderData colliderData) {

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using Unity.Entities;
 
+/// <summary>
+/// This is attached to the collider gameobject and holds reference to the linked entity.
+/// </summary>
 public class EntityCollider : MonoBehaviour {
 
     public int EntityColliderIndex { get; set; }

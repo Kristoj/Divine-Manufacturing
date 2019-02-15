@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using Dima.Modules;
 
 namespace Dima.Player {
     public class PlayerBuilding : MonoBehaviour {
@@ -70,8 +69,6 @@ namespace Dima.Player {
             ghostRenderer.material = ghostMaterialValid;          // Update ghost material to valid
         }
 
-        /* Divine solution by Kristo Johansson */
-        /// <returns></returns>
         // Snap raycast hit to the grid
         public Vector3 GetHitPosition() {
             if (hit.collider != null) {
@@ -117,7 +114,8 @@ namespace Dima.Player {
                     }
                     // Y is greatest
                     else if (longestDistance == originDistance.y) {
-                        float tempYOffset = (GameWorld.LocalPlayer.Player_Toolbar.SelectedSlot.SlotEntityReferenceData.Value == 1 ? .5f : hit.collider.bounds.size.y);     // This will be removed in the future
+                        float tempYOffset = (GameWorld.LocalPlayer.Player_Toolbar.SelectedSlot.SlotEntityReferenceData.Value == 1 ?     // This will be removed in the future
+                            .5f : hit.collider.bounds.size.y);     
                         hitPos.y += (originDistance.y >= 0 ? -offset * tempYOffset : offset * tempYOffset);
                         GreatestAxis = originDistance.y >= 0 ? "-Y" : "Y";
                     }

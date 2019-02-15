@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Dima.DebugStuff {
 
-    public class DebugUI : MonoBehaviour {
+    public class Debug_UI : MonoBehaviour {
 
         public Text focusRoundText;
         public Text focusRawText;

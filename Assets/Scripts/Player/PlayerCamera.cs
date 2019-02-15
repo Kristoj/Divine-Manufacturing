@@ -23,7 +23,7 @@ namespace Dima.Player {
         public bool hideCursor = true;
 
         void Awake() {
-
+            camEuler.y = transform.eulerAngles.y;
             //  Head and camera reference
             head = transform.GetChild(0);
             if (head != null)
